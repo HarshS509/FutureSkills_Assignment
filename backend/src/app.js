@@ -25,8 +25,8 @@ app.use(compression());
 // Cards routes
 app.use("/api/cards", cardRouter);
 
-app.get("/", (req, res) => {
-  res.send("Yay!! Backend of MySchool app is now accessible");
+app.get("/ping", (req, res) => {
+  res.send("Yay!! Backend of my app is now accessible");
 });
 
 app.all("*", (req, res) => {
