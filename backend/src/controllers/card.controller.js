@@ -16,16 +16,28 @@ export const getCardsHandler = asyncHandler(async (req, res) => {
 });
 
 export const getCardByIdHandler = asyncHandler(async (req, res) => {
-  const { title } = req.params;
-  const card = await Card.find({ title });
+  const { query } = req.query;
+  if (!query) {
+    throw new ApiError(404, "Search query is required");
+  }
+  const cards = await Card.find();
+  const filteredCards = cards?.filter((card) =>
+    card.title.toLowerCase().includes(query.toLowerCase())
+  );
 
-  if (!card) {
-    throw new ApiError(404, "card not found");
+  if (!filteredCards) {
+    throw new ApiError(404, "No cards found :");
   }
 
   res
     .status(200)
-    .json(new ApiResponse(200, { card }, "Card fetched successfully"));
+    .json(
+      new ApiResponse(
+        200,
+        { cards: filteredCards },
+        "Card fetched successfully"
+      )
+    );
 });
 
 export const createCardHandler = asyncHandler(async (req, res) => {

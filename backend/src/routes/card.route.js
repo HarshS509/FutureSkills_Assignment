@@ -9,6 +9,6 @@ import {
 const router = Router();
 
 router.route("/").get(getCardsHandler).post(createCardHandler);
-router.route("/:title").get(getCardByIdHandler);
+router.route("/search").get(getCardByIdHandler);
 
 export default router;
