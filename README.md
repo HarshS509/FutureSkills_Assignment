@@ -5,8 +5,8 @@
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/HarshS509/FutureSkills
-   cd FutureSkills
+   git clone https://github.com/HarshS509/FutureSkills_Assignment
+   cd FutureSkills_Assignment
    ```
 
 2. **Install dependencies:**
